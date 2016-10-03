@@ -2,7 +2,7 @@
 
 Zcash inside docker
 
-Image is based on the [gliderlabs/alpine](https://registry.hub.docker.com/u/gliderlabs/alpine/) base image
+Image is based on the [debian](https://hub.docker.com/_/debian/) base image
 
 ## Docker image size
 
@@ -16,7 +16,7 @@ docker run [docker-options] k0st/zcash
 
 ## Examples
 
-Typical basic usage (using SQLite if databate is not linked): 
+Typical basic usage (start zcashd daemon): 
 
 ```
 docker run -it k0st/zcash zcashd
