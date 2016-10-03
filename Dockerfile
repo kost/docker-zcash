@@ -10,7 +10,7 @@ RUN apt-get autoclean && apt-get autoremove && apt-get update && \
     automake ncurses-dev libcurl4-openssl-dev libssl-dev libgtest-dev \
     make autoconf automake libtool git apt-utils pkg-config libc6-dev \
     libcurl3-dev libudev-dev m4 g++-multilib unzip git python zlib1g-dev \
-    wget ca-certificates bsdmainutils && \
+    wget ca-certificates pwgen bsdmainutils && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /src/zcash/; cd /src/zcash; \
     git clone ${ZCASH_URL} zcash && cd zcash && git checkout ${ZCASH_VERSION} && \
@@ -25,7 +25,7 @@ RUN apt-get autoclean && apt-get autoremove && apt-get update && \
 
 USER zcash
 RUN echo "rpcuser=zcash" > ${ZCASH_CONF} && \
-	echo "rpcpassword=zcashpass" >> ${ZCASH_CONF} && \
+	echo "rpcpassword=`pwgen 20 1`" >> ${ZCASH_CONF} && \
 	echo "testnet=1" >> ${ZCASH_CONF} && \
 	echo "addnode=betatestnet.z.cash" >> ${ZCASH_CONF} && \
 	echo "Success"
