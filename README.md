@@ -31,8 +31,8 @@ docker run -it k0st/zcash zcashd -gen
 Typical usage to perform query:
 
 ```
-docker run -d --name zcash test/zcash zcashd
-docker exec -u zcash zcash zcash-cli getbalance
+docker run -d --name zcashcont k0st/zcash zcashd
+docker exec -u zcash zcashcont zcash-cli getbalance
 ```
 
 ### Todo
