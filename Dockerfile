@@ -11,6 +11,9 @@ RUN apt-get autoclean && apt-get autoremove && apt-get update && \
     make autoconf automake libtool git apt-utils pkg-config libc6-dev \
     libcurl3-dev libudev-dev m4 g++-multilib unzip git python zlib1g-dev \
     wget ca-certificates pwgen bsdmainutils && \
+    dd if=/dev/zero of=/swapfile bs=1k count=1024k && \
+    mkswap /swapfile && \
+    swapon /swapfile && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /src/zcash/; cd /src/zcash; \
     git clone ${ZCASH_URL} zcash && cd zcash && git checkout ${ZCASH_VERSION} && \
@@ -21,6 +24,8 @@ RUN apt-get autoclean && apt-get autoremove && apt-get update && \
     mv /root/.zcash-params /home/zcash/ && \ 
     mkdir -p /home/zcash/.zcash/ && \
     chown -R zcash /home/zcash && \
+    swapoff /swapfile && \
+    rm -f /swapfile && \
     echo "Success"
 
 USER zcash
