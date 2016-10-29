@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER kost - https://github.com/kost
 
 ENV	ZCASH_URL=https://github.com/zcash/zcash.git \
-	ZCASH_VERSION=v1.0.0-rc1 \
+	ZCASH_VERSION=v1.0.0 \
 	ZCASH_CONF=/home/zcash/.zcash/zcash.conf
 
 RUN apt-get autoclean && apt-get autoremove && apt-get update && \
@@ -26,8 +26,7 @@ RUN apt-get autoclean && apt-get autoremove && apt-get update && \
 USER zcash
 RUN echo "rpcuser=zcash" > ${ZCASH_CONF} && \
 	echo "rpcpassword=`pwgen 20 1`" >> ${ZCASH_CONF} && \
-	echo "testnet=1" >> ${ZCASH_CONF} && \
-	echo "addnode=betatestnet.z.cash" >> ${ZCASH_CONF} && \
+	echo "addnode=mainnet.z.cash" >> ${ZCASH_CONF} && \
 	echo "Success"
 
 VOLUME ["/home/zcash/.zcash"]
