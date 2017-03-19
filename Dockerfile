@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER kost - https://github.com/kost
 
 ENV	ZCASH_URL=https://github.com/zcash/zcash.git \
-	ZCASH_VERSION=v1.0.0 \
+	ZCASH_VERSION=v1.0.7-1 \
 	ZCASH_CONF=/home/zcash/.zcash/zcash.conf
 
 RUN apt-get autoclean && apt-get autoremove && apt-get update && \
@@ -15,7 +15,7 @@ RUN apt-get autoclean && apt-get autoremove && apt-get update && \
     mkdir -p /src/zcash/; cd /src/zcash; \
     git clone ${ZCASH_URL} zcash && cd zcash && git checkout ${ZCASH_VERSION} && \
     ./zcutil/fetch-params.sh && ./zcutil/build.sh -j4 && cd /src/zcash/zcash/src && \
-    /usr/bin/install -c bitcoin-tx zcashd zcash-cli zcash-gtest -t /usr/local/bin/ && \
+    /usr/bin/install -c zcash-tx zcashd zcash-cli zcash-gtest -t /usr/local/bin/ && \
     rm -rf /src/zcash/ && \
     adduser --uid 1000 --system zcash && \
     mv /root/.zcash-params /home/zcash/ && \ 
