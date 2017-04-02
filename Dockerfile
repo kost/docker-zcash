@@ -8,7 +8,7 @@ ENV	ZCASH_URL=https://github.com/zcash/zcash.git \
 RUN apt-get autoclean && apt-get autoremove && apt-get update && \
     apt-get -qqy install --no-install-recommends build-essential \
     automake ncurses-dev libcurl4-openssl-dev libssl-dev libgtest-dev \
-    make autoconf automake libtool git apt-utils pkg-config libc6-dev \
+    make autoconf libtool apt-utils pkg-config libc6-dev \
     libcurl3-dev libudev-dev m4 g++-multilib unzip git python zlib1g-dev \
     wget ca-certificates pwgen bsdmainutils && \
     rm -rf /var/lib/apt/lists/* && \
