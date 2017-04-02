@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER kost - https://github.com/kost
 
 ENV	ZCASH_URL=https://github.com/zcash/zcash.git \
-	ZCASH_VERSION=v1.0.7-1 \
+	ZCASH_VERSION=v1.0.8 \
 	ZCASH_CONF=/home/zcash/.zcash/zcash.conf
 
 RUN apt-get autoclean && apt-get autoremove && apt-get update && \
